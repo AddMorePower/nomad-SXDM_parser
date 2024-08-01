@@ -1,0 +1,3 @@
+data:
+  m_def: nomad_sxdm_parser.schema_packages.mypackage.MySchema
+  name: Markus
