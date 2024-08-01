@@ -12,7 +12,7 @@ class MyParserEntryPoint(ParserEntryPoint):
 
 
 myparser = MyParserEntryPoint(
-    name='MyParser',
-    description='Parser defined using the new plugin mechanism.',
-    mainfile_name_re='.*\.myparser',
+    name='SXDM parser',
+    description='Parser for experimental data files coming from SXDM at ESRF.',
+    mainfile_name_re='.*SXDM.*\.h5',
 )
