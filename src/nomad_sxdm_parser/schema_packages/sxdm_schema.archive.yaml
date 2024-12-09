@@ -1,0 +1,65 @@
+definitions:
+  sections:
+    Data:
+      quantities:
+        energy:
+          type: str
+        sxdm_scan_type:
+          type: str
+        dim_x:
+          type: int
+        dim_y:
+          type: int
+        sample_x:
+          type: np.float64
+          shape: ['dim_x']
+        sample_y:
+          type: np.float64
+          shape: ['dim_y']
+        dataset:
+          type: np.float64
+          shape: [9, 'dim_x', 'dim_y']
+    Monochromator:
+      quantities:
+        energy:
+          type: str
+    Source:
+      quantities:
+        type:
+          type: str
+        probe:
+          type: str
+        name:
+          type: str
+    Sample:
+      quantities:
+        rotation_angle:
+          type: np.float64
+    Instrument:
+      sub_sections:
+        monochromator:
+          section: Monochromator
+          repeats: false
+        source:
+          section: Source
+          repeats: false
+    SXDMData:
+      quantities:
+        definition:
+          type: str
+        start_time:
+          type: str
+        end_time:
+          type: str
+        title:
+          type: str
+      sub_sections:
+        data:
+          section: Data
+          repeats: false
+        instrument:
+          section: Instrument
+          repeats: false
+        sample:
+          section: Sample
+          repeats: false
