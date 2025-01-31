@@ -14,5 +14,8 @@ class MyParserEntryPoint(ParserEntryPoint):
 myparser = MyParserEntryPoint(
     name='SXDM parser',
     description='Parser for experimental data files coming from SXDM at ESRF.',
-    mainfile_name_re='.*SXDM.*\.h5',
+    mainfile_name_re='.*\.h5',
+    mainfile_contents_dict={
+        '__has_all_keys': ['ENTRY/DATA', 'ENTRY/INSTRUMENT', 'ENTRY/SAMPLE']
+    },
 )
