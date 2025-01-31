@@ -8,6 +8,6 @@ from nomad_sxdm_parser.parsers.myparser import MyParser
 def test_parse_file():
     parser = MyParser()
     archive = EntryArchive()
-    parser.parse('tests/data/example.out', archive, logging.getLogger())
+    parser.parse('tests/data/SXDM_test_output_NX.h5', archive, logging.getLogger())
 
-    assert archive.results.material.elements == ['H', 'O']
+    assert archive.data.definition == 'NXsxdm'
