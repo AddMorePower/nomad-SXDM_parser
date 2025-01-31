@@ -1,6 +1,7 @@
 import logging
 
 from nomad.datamodel import EntryArchive
+
 from nomad_sxdm_parser.parsers.myparser import MyParser
 
 

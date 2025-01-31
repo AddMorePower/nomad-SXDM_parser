@@ -11,22 +11,18 @@ if TYPE_CHECKING:
     )
 
 import os
+
 import h5py
 import numpy as np
-
 from nomad.config import config
-from nomad.datamodel.results import Material, Results
 from nomad.parsing.parser import MatchingParser
 
 import nomad_sxdm_parser.schema_packages.mypackage as sxdm
 
-configuration = config.get_plugin_entry_point(
-    'nomad_sxdm_parser.parsers:myparser'
-)
+configuration = config.get_plugin_entry_point('nomad_sxdm_parser.parsers:myparser')
 
 
 class MyParser(MatchingParser):
-
     def extract_string(self, dataset):
         return dataset[()].decode('UTF-8')
 
@@ -43,7 +39,7 @@ class MyParser(MatchingParser):
         sec_source.probe = self.extract_string(source['probe'])
         sec_source.type = self.extract_string(source['type'])
 
-###############################################################################
+    ###############################################################################
     def parse_data(self):
         data = self.sxdm.m_create(sxdm.Data)
 
@@ -61,14 +57,13 @@ class MyParser(MatchingParser):
         data.sample_y = np.around(sample_y, 1)
         data.dataset = self.data_section['data'][()]
 
-###############################################################################
+    ###############################################################################
     def parse_sample(self):
         sample = self.sxdm.m_create(sxdm.Sample)
         sample.rotation_angle = self.sample['rotation_angle'][()]
 
-
-###############################################################################
-###############################################################################
+    ###############################################################################
+    ###############################################################################
     def parse(
         self,
         mainfile: str,
@@ -76,7 +71,6 @@ class MyParser(MatchingParser):
         logger: 'BoundLogger',
         child_archives: dict[str, 'EntryArchive'] = None,
     ) -> None:
-
         self.filepath = mainfile
         self.maindir = os.path.dirname(self.filepath)
         self.mainfile = os.path.basename(self.filepath)

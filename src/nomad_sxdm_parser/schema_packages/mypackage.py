@@ -3,24 +3,19 @@ from typing import (
 )
 
 if TYPE_CHECKING:
-    from nomad.datamodel.datamodel import (
-        EntryArchive,
-    )
-    from structlog.stdlib import (
-        BoundLogger,
-    )
-
-from numpy import float64
+    pass
 
 from nomad.config import config
 from nomad.datamodel.data import Schema
-from nomad.metainfo import Quantity, SchemaPackage, MSection, SubSection
+from nomad.metainfo import MSection, Quantity, SchemaPackage, SubSection
+from numpy import float64
 
 configuration = config.get_plugin_entry_point(
     'nomad_sxdm_parser.schema_packages:mypackage'
 )
 
 m_package = SchemaPackage()
+
 
 class Data(MSection):
     energy = Quantity(type=str)
@@ -34,14 +29,14 @@ class Data(MSection):
 
 ###############################################################################
 class Monochromator(MSection):
-    energy = Quantity(
-        type=str
-    )
+    energy = Quantity(type=str)
+
 
 class Source(MSection):
     type = Quantity(type=str)
     probe = Quantity(type=str)
     name = Quantity(type=str)
+
 
 class Instrument(MSection):
     monochromator = SubSection(sub_section=Monochromator.m_def, repeats=False)
@@ -51,8 +46,7 @@ class Instrument(MSection):
 ###############################################################################
 class Sample(MSection):
     rotation_angle = Quantity(
-        type=float64,
-        description="The rotation angle used during the acquisition."
+        type=float64, description='The rotation angle used during the acquisition.'
     )
 
 
@@ -60,23 +54,14 @@ class Sample(MSection):
 ###############################################################################
 class SXDMData(Schema):
     definition = Quantity(
-        type=str,
-        description="Name of the potential NeXus application definition."
+        type=str, description='Name of the potential NeXus application definition.'
     )
-    start_time = Quantity(
-        type=str,
-        description="Date at the start of the acquisition."
-    )
-    end_time = Quantity(
-        type=str,
-        description="Date at the end of the acquisition."
-    )
-    title = Quantity(
-        type=str,
-        description="Name of the file."
-    )
+    start_time = Quantity(type=str, description='Date at the start of the acquisition.')
+    end_time = Quantity(type=str, description='Date at the end of the acquisition.')
+    title = Quantity(type=str, description='Name of the file.')
     data = SubSection(sub_section=Data.m_def, repeats=False)
     instrument = SubSection(sub_section=Instrument.m_def, repeats=False)
     sample = SubSection(sub_section=Sample.m_def, repeats=False)
+
 
 m_package.__init_metainfo__()
