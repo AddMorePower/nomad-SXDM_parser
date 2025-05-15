@@ -2,7 +2,7 @@ site_name: nomad-SXDM_parser
 site_description: A parser plugin for SXDM processed files
 site_author: Guillaume Gaisné
 
-repo_url: https://github.com/Guillaume-Gaisne/nomad-SXDM_parser
+repo_url: https://github.com/AddMorePower/nomad-SXDM_parser
 edit_uri: ""
 
 nav:
