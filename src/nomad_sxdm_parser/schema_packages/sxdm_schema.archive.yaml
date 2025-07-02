@@ -43,7 +43,7 @@ definitions:
         source:
           section: Source
           repeats: false
-    SXDMData:
+    SXDMOutput:
       quantities:
         definition:
           type: str

@@ -82,7 +82,7 @@ class MyParser(MatchingParser):
             self.data = None
             return
 
-        self.sxdm = sxdm.SXDMData()
+        self.sxdm = sxdm.SXDMOutput()
 
         sec_entry = self.data['ENTRY']
 
