@@ -1,4 +1,4 @@
-# Welcome to the `nomad-SXDM_parser` documentation
+# Welcome to the `SXDM_parser` documentation
 
 A parser plugin for SXDM processed files
 
